@@ -19,6 +19,11 @@ jobs:
         node-version: [ 18.x ]
         test-type: [ esm ]
 
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1

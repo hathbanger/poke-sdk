@@ -11,7 +11,7 @@
   "sideEffects": false,
   "type": "module",
   "types": "./types/index.d.ts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "node": ">=18.0.0"
   },
