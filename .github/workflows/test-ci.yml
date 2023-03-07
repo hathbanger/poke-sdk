@@ -36,3 +36,13 @@ jobs:
 
       - name: Run tests (${{ matrix.test-type }})
         run: npm run test-${{ matrix.test-type }}
+
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: "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"
