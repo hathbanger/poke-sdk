@@ -1,0 +1,37 @@
+{
+  "name": "poke-sdk",
+  "sideEffects": false,
+  "type": "module",
+  "types": "./types/index.d.ts",
+  "version": "0.0.1",
+  "scripts": {
+    "auto-build": "npm run build -- -w",
+    "build": "tsc --project tsconfig.esm.json",
+    "build-all": "npm run build && npm run build-commonjs && npm run build-types",
+    "build-commonjs": "tsc --project tsconfig.commonjs.json",
+    "build-types": "tsc --project tsconfig.types.json",
+    "clean": "rm -rf dist lib.esm lib.commonjs types",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "test": "npm run test-esm",
+    "test-commonjs": "mocha --reporter ./reporter.cjs ./lib.commonjs/_tests/test-*.js",
+    "test-coverage": "c8 -o output -r lcov -r text mocha --no-color --reporter ./reporter.cjs ./lib.esm/_tests/test-*.js | tee output/summary.txt",
+    "test-esm": "mocha --reporter ./reporter.cjs ./lib.esm/_tests/test-*.js"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "13.3.0",
+    "@types/mocha": "9.1.1",
+    "@types/semver": "7.3.12",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "c8": "7.12.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
+    "mocha": "10.0.0",
+    "prettier": "^2.8.4",
+    "rollup": "2.78.1",
+    "semver": "7.3.7",
+    "typescript": "4.9.5",
+    "uglify-js": "3.17.0"
+  }
+}
